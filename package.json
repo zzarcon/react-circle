@@ -21,7 +21,7 @@
     "react": "^16.2.0"
   },
   "name": "react-circle",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "files": [
     "dist"
   ]
