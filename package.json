@@ -15,7 +15,7 @@
     "test:ci": "ts-react-toolbox test --runInBand --coverage",
     "build": "ts-react-toolbox build",
     "release": "npm version patch && git push --tags && git push && npm publish",
-    "prepublishOnly": "yarn test:ci && yarn build"
+    "prepublishOnly": "yarn build"
   },
   "peerDependencies": {
     "react": "^16.2.0"
