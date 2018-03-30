@@ -5035,8 +5035,8 @@ string-width@^2.0.0, string-width@^2.1.1:
     strip-ansi "^4.0.0"
 
 string_decoder@^1.0.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/string_decoder/-/string_decoder-1.1.0.tgz#384f322ee8a848e500effde99901bba849c5d403"
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/string_decoder/-/string_decoder-1.1.1.tgz#9cf1611ba62685d7030ae9e4ba34149c3af03fc8"
   dependencies:
     safe-buffer "~5.1.0"
 
@@ -5249,9 +5249,9 @@ trim-right@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/trim-right/-/trim-right-1.0.1.tgz#cb2e1203067e0c8de1f614094b9fe45704ea6003"
 
-ts-react-toolbox@^0.0.23:
-  version "0.0.23"
-  resolved "https://registry.yarnpkg.com/ts-react-toolbox/-/ts-react-toolbox-0.0.23.tgz#dc4d7ec644a764c1ba34f884cb607c0350bc9c16"
+ts-react-toolbox@^0.0.24:
+  version "0.0.24"
+  resolved "https://registry.yarnpkg.com/ts-react-toolbox/-/ts-react-toolbox-0.0.24.tgz#3b5745eac6650ccd3c0d1a468f9674f603f8d037"
   dependencies:
     "@types/enzyme" "^3.1.9"
     "@types/jest" "^22.2.0"
@@ -5267,6 +5267,7 @@ ts-react-toolbox@^0.0.23:
     jest-cli "^22.4.3"
     react "^16.2.0"
     react-dom "^16.2.0"
+    styled-components "^3.2.3"
     typescript "^2.7.2"
     webpack "^4.2.0"
     webpack-dev-server "^3.1.1"
