@@ -1,3 +1,7 @@
+<div align="center">
+  <img src="demo.gif" alt="Logo" width="400">
+  <br><br>
+</div>
 # react-circle
 > Renders a svg circle + percentage. It just works
 
