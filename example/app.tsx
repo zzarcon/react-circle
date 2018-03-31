@@ -11,9 +11,10 @@ export interface AppState {
   bgColor: string;
   textColor: string;
   size: string;
+  lineWidth: string;
 }
 
-export type StatePropName = 'progressColor' | 'bgColor' | 'textColor' | 'size';
+export type StatePropName = 'progressColor' | 'bgColor' | 'textColor' | 'size' | 'lineWidth';
 
 export default class App extends Component <{}, AppState> {
   state: AppState = {
@@ -21,9 +22,10 @@ export default class App extends Component <{}, AppState> {
     progressColor: '#F7DC1B',
     bgColor: '#54BAD8',
     textColor: 'hotpink',
-    size: '200'
+    size: '200',
+    lineWidth: `30`
   }
-  
+
   onTextFieldChange = (propName: StatePropName) => (e: any) => {
     this.setState({[propName]: e.target.value} as any);
   }
@@ -33,7 +35,7 @@ export default class App extends Component <{}, AppState> {
   }
 
   render() {
-    const {progress, progressColor, bgColor, textColor, size} = this.state;
+    const {progress, progressColor, bgColor, textColor, size, lineWidth} = this.state;
 
     return (
       <AppWrapper>
@@ -50,6 +52,7 @@ export default class App extends Component <{}, AppState> {
           </div>
           <TextFieldsWrapper>
             <TextField value={size} label="width" onChange={this.onTextFieldChange('size')} />
+            <TextField value={lineWidth} label="line width" onChange={this.onTextFieldChange('lineWidth')} />
             <TextField value={progressColor} label="progress color" onChange={this.onTextFieldChange('progressColor')} />
             <TextField value={bgColor} label="background color" onChange={this.onTextFieldChange('bgColor')} />
             <TextField value={textColor} label="text color" onChange={this.onTextFieldChange('textColor')} />
@@ -64,6 +67,7 @@ export default class App extends Component <{}, AppState> {
               progressColor={progressColor}
               bgColor={bgColor}
               textColor={textColor}
+              lineWidth={lineWidth}
             />
           </div>
           <div>
