@@ -35,6 +35,7 @@ import Circle from 'react-circle';
 
 <Circle
   size={150}
+  lineWidth={14}
   progress={69}
   progressColor="cornflowerblue"
   bgColor="whitesmoke"
