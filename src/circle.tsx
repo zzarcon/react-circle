@@ -1,17 +1,17 @@
 import * as React from 'react';
-import { Component } from 'react';
+import { Component, CSSProperties } from 'react';
 
 export interface CircleProps {
   progress: number;
   showPercentage?: boolean;
-  showPercentageSymbol: boolean;
+  showPercentageSymbol?: boolean;
   progressColor?: string;
   bgColor?: string;
   textColor?: string;
   size?: string;
   lineWidth?: string;
-  percentSpacing: number;
-  textStyle?: object;
+  percentSpacing?: number;
+  textStyle?: CSSProperties;
 }
 
 export interface CircleState {
@@ -32,7 +32,8 @@ export class Circle extends Component<CircleProps, CircleState> {
     textColor: '#6b778c',
     size: '100',
     lineWidth: '25',
-    percentSpacing: 10
+    percentSpacing: 10,
+    textStyle: { font: 'bold 4rem Helvetica, Arial, sans-serif' }
   }
 
   get text() {
@@ -40,7 +41,7 @@ export class Circle extends Component<CircleProps, CircleState> {
     if (!showPercentage) return;
 
     return (
-      <text style={{ font: 'bold 4rem Helvetica, Arial, sans-serif', ...textStyle }} fill={textColor} x="50%" y="50%" dx="-25" textAnchor="middle">
+      <text style={textStyle} fill={textColor} x="50%" y="50%" dx="-25" textAnchor="middle">
         {progress}{showPercentageSymbol && <tspan dx={percentSpacing}>%</tspan>}
       </text>
     );
