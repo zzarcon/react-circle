@@ -6,7 +6,7 @@
     "ts-react-toolbox": "^0.0.24"
   },
   "engines": {
-    "node": ">=8.5.0"
+    "node": ">=8.4.0"
   },
   "scripts": {
     "start": "webpack -w",
