@@ -6,6 +6,8 @@
 # react-circle [![Build Status](https://travis-ci.org/zzarcon/react-circle.svg?branch=master)](https://travis-ci.org/zzarcon/react-circle)
 > Renders a svg circle + percentage. It just works
 
+# Demo
+[https://zzarcon.github.io/react-circle](https://zzarcon.github.io/react-circle/)
 # Install 🚀
 
 ```
