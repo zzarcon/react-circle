@@ -3,19 +3,21 @@
     "@atlaskit/field-range": "^2.6.3",
     "@atlaskit/field-text": "^4.3.0",
     "styled-components": "^3.2.3",
-    "ts-react-toolbox": "^0.0.24"
+    "ts-react-toolbox": "^0.0.45"
   },
   "engines": {
-    "node": ">=8.4.0"
+    "node": "^8.5.0"
   },
   "scripts": {
-    "start": "webpack -w",
     "dev": "ts-react-toolbox dev",
     "test": "ts-react-toolbox test",
     "test:ci": "ts-react-toolbox test --runInBand --coverage",
     "build": "ts-react-toolbox build",
-    "release": "npm version patch && git push --tags && git push && npm publish",
-    "prepublishOnly": "yarn build"
+    "release": "ts-react-toolbox release",
+    "prepublishOnly": "yarn build",
+    "bootstrap": "ts-react-toolbox init",
+    "lint": "ts-react-toolbox lint",
+    "static": "ts-react-toolbox publish"
   },
   "peerDependencies": {
     "react": "^16.2.0"
