@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Component, CSSProperties } from 'react';
 
 export interface CircleProps {
+  animate?: boolean;
   progress: number;
   showPercentage?: boolean;
   showPercentageSymbol?: boolean;
@@ -49,13 +50,13 @@ export class Circle extends Component<CircleProps, CircleState> {
 
   render() {
     const { text } = this;
-    const { progress, size, bgColor, progressColor, lineWidth } = this.props;
+    const { progress, size, bgColor, progressColor, lineWidth, animate } = this.props;
     const strokeDashoffset = getOffset(progress);
-
+    const transition = animate ? 'stroke-dashoffset 1s ease-out' : null;
     return (
       <svg width={size} height={size} viewBox="-25 -25 400 400">
         <circle stroke={bgColor} cx="175" cy="175" r="175" strokeWidth={lineWidth} fill="none" />
-        <circle stroke={progressColor} transform="rotate(-90 175 175)" cx="175" cy="175" r="175" strokeDasharray="1100" strokeWidth={lineWidth} strokeDashoffset="1100" fill="none" style={{ strokeDashoffset, transition: 'stroke-dashoffset 1s ease-out' }} />
+        <circle stroke={progressColor} transform="rotate(-90 175 175)" cx="175" cy="175" r="175" strokeDasharray="1100" strokeWidth={lineWidth} strokeDashoffset="1100" fill="none" style={{ strokeDashoffset, transition }} />
         {text}
       </svg>
     );
