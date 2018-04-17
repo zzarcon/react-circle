@@ -13,7 +13,7 @@ export interface AppState {
   textColor: string;
   size: string;
   lineWidth: string;
-  animate: boolean;
+  animated: boolean;
 }
 
 export type StatePropName = 'progressColor' | 'bgColor' | 'textColor' | 'size' | 'lineWidth';
@@ -26,7 +26,7 @@ export default class App extends Component<{}, AppState> {
     textColor: 'hotpink',
     size: '200',
     lineWidth: `30`,
-    animate: true,
+    animated: true,
   }
 
   onTextFieldChange = (propName: StatePropName) => (e: any) => {
@@ -37,13 +37,12 @@ export default class App extends Component<{}, AppState> {
     this.setState({ progress });
   }
 
-  // onAnimationChange = () => {
-  //   // this.setState({ animate: !this.state.animate });
-  //   console.log(this.state.animate)
-  // }
+  onAnimationChange = (animated: boolean) => {
+    this.setState({ animated: !animated });
+  }
 
   render() {
-    const { progress, progressColor, bgColor, textColor, size, lineWidth, animate } = this.state;
+    const { progress, progressColor, bgColor, textColor, size, lineWidth, animated } = this.state;
 
     return (
       <AppWrapper>
@@ -64,16 +63,17 @@ export default class App extends Component<{}, AppState> {
             <TextField value={progressColor} label="progress color" onChange={this.onTextFieldChange('progressColor')} />
             <TextField value={bgColor} label="background color" onChange={this.onTextFieldChange('bgColor')} />
             <TextField value={textColor} label="text color" onChange={this.onTextFieldChange('textColor')} />
-            {/* <Checkbox value={animate} 
-            label="Animation" 
-            onChange={() => {this.onAnimationChange()}}></Checkbox> */}
+            <Checkbox 
+              initiallyChecked={animated} 
+              label="Animation" 
+              onChange={this.onAnimationChange(this.state.animated)}></Checkbox>
           </TextFieldsWrapper>
         </OptionsWrapper>
         <CircleWrapper>
           <div>
             <h1>Custom</h1>
             <Circle
-              animate={animate}
+              animate={animated}
               size={size}
               progress={progress}
               progressColor={progressColor}
