@@ -49,6 +49,7 @@ import Circle from 'react-circle';
     font: 'bold 5rem Helvetica, Arial, sans-serif' // CSSProperties: Custom styling for percentage.
   }}
   percentSpacing={10} // Number: Adjust spacing of "%" symbol and number.
+  roundedStroke={true} // Boolean: Rounded/Flat line ends
   showPercentage={true} // Boolean: Show/hide percentage.
   showPercentageSymbol={true} // Boolean: Show/hide only the "%" symbol.
 />

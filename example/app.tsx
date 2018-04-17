@@ -62,6 +62,7 @@ export default class App extends Component<{}, AppState> {
           <div>
             <h1>Custom</h1>
             <Circle
+              roundedStroke
               size={size}
               progress={progress}
               progressColor={progressColor}
