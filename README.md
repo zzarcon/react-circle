@@ -39,6 +39,7 @@ import Circle from 'react-circle';
 // Details are ordered as:
 // <Type>: <Description>
 <Circle
+  animate={true} // Boolean: Animated/Static progress
   size={150} // Number: Defines the size of the circle.
   lineWidth={14} // Number: Defines the thickness of the circle's stroke. 
   progress={69} // Number: Update to change the progress and percentage.

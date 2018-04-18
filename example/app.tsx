@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Component } from 'react';
 import FieldRange from '@atlaskit/field-range';
 import TextField from '@atlaskit/field-text';
+import Checkbox from '@atlaskit/checkbox';
 import { AppWrapper, TextFieldsWrapper, OptionsWrapper, CircleWrapper } from './styled';
 import Circle from '../src';
 
@@ -12,9 +13,11 @@ export interface AppState {
   textColor: string;
   size: string;
   lineWidth: string;
+  animated: boolean;
+  roundedStroke: boolean;
 }
 
-export type StatePropName = 'progressColor' | 'bgColor' | 'textColor' | 'size' | 'lineWidth';
+export type StatePropName = keyof AppState;
 
 export default class App extends Component<{}, AppState> {
   state: AppState = {
@@ -23,7 +26,9 @@ export default class App extends Component<{}, AppState> {
     bgColor: '#54BAD8',
     textColor: 'hotpink',
     size: '200',
-    lineWidth: `30`
+    lineWidth: `30`,
+    animated: true,
+    roundedStroke: true
   }
 
   onTextFieldChange = (propName: StatePropName) => (e: any) => {
@@ -34,8 +39,13 @@ export default class App extends Component<{}, AppState> {
     this.setState({ progress });
   }
 
+  onCheckboxChange = (propName: StatePropName) => (e: any) => {
+    const currentValue = this.state[propName];
+    this.setState({ [propName]: !currentValue } as any);
+  }
+
   render() {
-    const { progress, progressColor, bgColor, textColor, size, lineWidth } = this.state;
+    const { progress, progressColor, bgColor, textColor, size, lineWidth, animated, roundedStroke } = this.state;
 
     return (
       <AppWrapper>
@@ -56,13 +66,26 @@ export default class App extends Component<{}, AppState> {
             <TextField value={progressColor} label="progress color" onChange={this.onTextFieldChange('progressColor')} />
             <TextField value={bgColor} label="background color" onChange={this.onTextFieldChange('bgColor')} />
             <TextField value={textColor} label="text color" onChange={this.onTextFieldChange('textColor')} />
+            <div>
+              <Checkbox
+                initiallyChecked={true} 
+                label="Animation" 
+                onChange={this.onCheckboxChange('animated')} 
+              />
+              <Checkbox
+                initiallyChecked={true}
+                label="Rounded stroke" 
+                onChange={this.onCheckboxChange('roundedStroke')} 
+              />
+            </div>
           </TextFieldsWrapper>
         </OptionsWrapper>
         <CircleWrapper>
           <div>
             <h1>Custom</h1>
             <Circle
-              roundedStroke
+              animate={animated}
+              roundedStroke={roundedStroke}
               size={size}
               progress={progress}
               progressColor={progressColor}

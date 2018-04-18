@@ -2,6 +2,32 @@
 # yarn lockfile v1
 
 
+"@atlaskit/analytics-next@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@atlaskit/analytics-next/-/analytics-next-2.0.0.tgz#974e5551fefc78683cf36be4bea1450132e55883"
+  dependencies:
+    prop-types "^15.5.10"
+
+"@atlaskit/button@^7.0.0":
+  version "7.0.2"
+  resolved "https://registry.yarnpkg.com/@atlaskit/button/-/button-7.0.2.tgz#d5e60e4d6987730435ccce6e26c8137d6498e830"
+  dependencies:
+    "@atlaskit/analytics-next" "^2.0.0"
+    "@atlaskit/theme" "^3.0.0"
+    babel-runtime "^6.26.0"
+    styled-components "1.4.6 - 3"
+
+"@atlaskit/checkbox@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@atlaskit/checkbox/-/checkbox-2.0.0.tgz#698e2f4ca6dec7a4c8142abdcd8052c400cacc1f"
+  dependencies:
+    "@atlaskit/button" "^7.0.0"
+    "@atlaskit/icon" "^11.0.0"
+    "@atlaskit/theme" "^3.0.0"
+    babel-runtime "^6.26.0"
+    prop-types "^15.5.10"
+    styled-components "1.4.6 - 3"
+
 "@atlaskit/field-base@^8.2.1":
   version "8.2.1"
   resolved "https://registry.yarnpkg.com/@atlaskit/field-base/-/field-base-8.2.1.tgz#e375351934f28ced27434e5d725c8eadf5a9cece"
@@ -39,6 +65,15 @@
     styled-components "1.4.6 - 3"
     uuid "^3.1.0"
 
+"@atlaskit/icon@^11.0.0":
+  version "11.0.0"
+  resolved "https://registry.yarnpkg.com/@atlaskit/icon/-/icon-11.0.0.tgz#47422ba7441fa3af4d9ff6c8eba437f1fdb676e5"
+  dependencies:
+    "@atlaskit/theme" "^3.0.0"
+    babel-runtime "^6.26.0"
+    styled-components "1.4.6 - 3"
+    uuid "^3.1.0"
+
 "@atlaskit/inline-dialog@^5.3.2":
   version "5.3.2"
   resolved "https://registry.yarnpkg.com/@atlaskit/inline-dialog/-/inline-dialog-5.3.2.tgz#ed0ff1629a64cacb66719747506377dde6cf695b"
@@ -65,6 +100,13 @@
 "@atlaskit/theme@^2.3.4", "@atlaskit/theme@^2.4.1":
   version "2.4.1"
   resolved "https://registry.yarnpkg.com/@atlaskit/theme/-/theme-2.4.1.tgz#a554075068ff4d85542292998f3544160b4a5a73"
+  dependencies:
+    prop-types "^15.5.10"
+    styled-components "1.4.6 - 3"
+
+"@atlaskit/theme@^3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@atlaskit/theme/-/theme-3.0.0.tgz#1ab9ae3fac1ac2572ff82df9508349880f252e75"
   dependencies:
     prop-types "^15.5.10"
     styled-components "1.4.6 - 3"

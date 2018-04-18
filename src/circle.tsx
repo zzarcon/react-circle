@@ -3,6 +3,7 @@ import { Component, CSSProperties } from 'react';
 
 export interface CircleProps {
   progress: number;
+  animate?: boolean;
   showPercentage?: boolean;
   showPercentageSymbol?: boolean;
   progressColor?: string;
@@ -26,6 +27,7 @@ const getOffset = (val = 0) => Math.round((100 - val) / 100 * diameter);
 export class Circle extends Component<CircleProps, CircleState> {
   static defaultProps: CircleProps = {
     progress: 0,
+    animate: true,
     showPercentage: true,
     showPercentageSymbol: true,
     progressColor: 'rgb(76, 154, 255)',
@@ -50,13 +52,15 @@ export class Circle extends Component<CircleProps, CircleState> {
 
   render() {
     const { text } = this;
-    const { progress, size, bgColor, progressColor, lineWidth, roundedStroke} = this.props;
+    const { progress, size, bgColor, progressColor, lineWidth, animate, roundedStroke } = this.props;
     const strokeDashoffset = getOffset(progress);
+    const transition = animate ? 'stroke-dashoffset 1s ease-out' : null;
     const strokeLinecap = roundedStroke ? 'round' : 'butt';
+
     return (
       <svg width={size} height={size} viewBox="-25 -25 400 400">
         <circle stroke={bgColor} cx="175" cy="175" r="175" strokeWidth={lineWidth} fill="none"/>
-        <circle stroke={progressColor} transform="rotate(-90 175 175)" cx="175" cy="175" r="175" strokeDasharray="1100" strokeWidth={lineWidth} strokeDashoffset="1100" strokeLinecap={strokeLinecap} fill="none"  style={{ strokeDashoffset, transition: 'stroke-dashoffset 1s ease-out' }} />
+        <circle stroke={progressColor} transform="rotate(-90 175 175)" cx="175" cy="175" r="175" strokeDasharray="1100" strokeWidth={lineWidth} strokeDashoffset="1100" strokeLinecap={strokeLinecap} fill="none" style={{ strokeDashoffset, transition }} />
         {text}
       </svg>
     );

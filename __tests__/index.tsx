@@ -17,7 +17,7 @@ describe('ReactCircle', () => {
     };
   };
 
-  it('Should render a <Circle/> with a 10px line', () => {
+  it('Should render with 10px line', () => {
     const {circle} = setup({lineWidth: '10'});
     expect(circle.find('circle').first().prop('strokeWidth')).toBe('10')
   })
@@ -29,7 +29,7 @@ describe('ReactCircle', () => {
     expect(innerWidth).toBe(outerWidth)
   })
 
-  it('Should render a <Circle/> with no text', () => {
+  it('Should render a with no text', () => {
     const {circle} = setup({showPercentage: false});
     expect(circle.find('text').exists()).toBeFalsy();
   })
@@ -38,4 +38,27 @@ describe('ReactCircle', () => {
     const {circle} = setup();
     expect(circle.find('text').text()).toEqual('25%');
   });
+
+  it('Should render in default with a square stroke', () => {
+    const { circle } = setup();
+    expect(circle.find('circle').last().prop('strokeLinecap')).toBe('butt');
+});
+
+  it('Should render with a rounded stroke', () => {
+    const {circle} = setup({roundedStroke: true});
+   expect(circle.find('circle').last().prop('strokeLinecap')).toBe('round');
+  });
+
+
+  it('Should default render with animation', () => {
+    const { circle } = setup({ animate: false });
+    const innerCircle = circle.find('circle').last()
+    expect(innerCircle.prop('style')).toMatchSnapshot();
+  })
+
+  it('Should render without animation', () => {
+    const { circle } = setup({animate:false});
+    const innerCircle = circle.find('circle').last()
+    expect(innerCircle.prop('style')).toMatchSnapshot();
+  })
 });
