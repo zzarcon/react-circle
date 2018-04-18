@@ -39,7 +39,7 @@ export default class App extends Component<{}, AppState> {
     this.setState({ progress });
   }
 
-  onAnimationCheckboxChange = (propName: StatePropName) => (e: any) => {
+  onCheckboxChange = (propName: StatePropName) => (e: any) => {
     const currentValue = this.state[propName];
     this.setState({ [propName]: !currentValue } as any);
   }
@@ -70,12 +70,12 @@ export default class App extends Component<{}, AppState> {
               <Checkbox
                 initiallyChecked={true} 
                 label="Animation" 
-                onChange={this.onAnimationCheckboxChange('animated')} 
+                onChange={this.onCheckboxChange('animated')} 
               />
               <Checkbox
                 initiallyChecked={true}
                 label="Rounded stroke" 
-                onChange={this.onAnimationCheckboxChange('roundedStroke')} 
+                onChange={this.onCheckboxChange('roundedStroke')} 
               />
             </div>
           </TextFieldsWrapper>
