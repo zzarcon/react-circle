@@ -22,7 +22,7 @@ describe('ReactCircle', () => {
     expect(circle.find('circle').first().prop('strokeWidth')).toBe('10')
   })
 
-  it('Should render inside circle of same with as outside one', () => {
+  it('Should render inside circle of same width as outside one', () => {
     const {circle} = setup({lineWidth: '10'});
     const innerWidth = circle.find('circle').first().prop('strokeWidth');
     const outerWidth = circle.find('circle').last().prop('strokeWidth');
