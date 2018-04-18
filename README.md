@@ -40,6 +40,7 @@ import Circle from 'react-circle';
 // <Type>: <Description>
 <Circle
   animate={true} // Boolean: Animated/Static progress
+  responsive={true} // Boolean: Make SVG adapt to parent size
   size={150} // Number: Defines the size of the circle.
   lineWidth={14} // Number: Defines the thickness of the circle's stroke. 
   progress={69} // Number: Update to change the progress and percentage.
