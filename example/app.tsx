@@ -38,7 +38,7 @@ export default class App extends Component<{}, AppState> {
   }
 
   onAnimationChange = (animated: boolean) => {
-    this.setState({ animated: !animated });
+    this.setState({ animated: !this.state.animated });
   }
 
   render() {
@@ -64,9 +64,9 @@ export default class App extends Component<{}, AppState> {
             <TextField value={bgColor} label="background color" onChange={this.onTextFieldChange('bgColor')} />
             <TextField value={textColor} label="text color" onChange={this.onTextFieldChange('textColor')} />
             <Checkbox 
-              initiallyChecked={animated} 
+              initiallyChecked={true} 
               label="Animation" 
-              onChange={this.onAnimationChange(this.state.animated)}></Checkbox>
+              onChange={this.onAnimationChange}></Checkbox>
           </TextFieldsWrapper>
         </OptionsWrapper>
         <CircleWrapper>
