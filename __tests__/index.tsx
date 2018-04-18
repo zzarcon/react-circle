@@ -1,60 +1,41 @@
 import * as React from 'react';
 import { shallow, render, mount } from 'enzyme';
-import Circle from '../src';
+import Circle, {CircleProps} from '../src';
 
 describe('ReactCircle', () => {
-  const setup = () => {
+  const setup = (props?: Partial<CircleProps>) => {
+    const initialOptions = {
+      progress: 25
+    }
+  
+    const circle = shallow(
+      <Circle {...initialOptions} {...props} />
+    );
+    
     return {
-      
+      circle
     };
   };
 
-  const initialOptions = {
-    progress: 25,
-    progressColor: '#F7DC1B',
-    bgColor: '#54BAD8',
-    textColor: 'hotpink',
-    size: '200',
-    lineWidth: `30`,
-    showPercentage: true
-  }
-
-  it('Should render a <Circle/> with text percentage', () => {
-    const CircleNode = shallow(
-      <Circle {...initialOptions}/>
-    )
-    expect(CircleNode).toMatchSnapshot();
-  })
-
   it('Should render a <Circle/> with a 10px line', () => {
-    const CircleNode = shallow(
-      <Circle {...initialOptions} lineWidth={'10'}/>
-    )
-    expect(CircleNode.find('circle').first().prop('strokeWidth')).toBe('10')
+    const {circle} = setup({lineWidth: '10'});
+    expect(circle.find('circle').first().prop('strokeWidth')).toBe('10')
   })
 
   it('Should render inside circle of same with as outside one', () => {
-    const CircleNode = shallow(
-      <Circle {...initialOptions} lineWidth={'10'} />
-    );
-    const innerWidth = CircleNode.find('circle').first().prop('strokeWidth');
-    const outerWidth = CircleNode.find('circle').last().prop('strokeWidth');
+    const {circle} = setup({lineWidth: '10'});
+    const innerWidth = circle.find('circle').first().prop('strokeWidth');
+    const outerWidth = circle.find('circle').last().prop('strokeWidth');
     expect(innerWidth).toBe(outerWidth)
   })
 
   it('Should render a <Circle/> with no text', () => {
-    const CircleNode = shallow(
-      <Circle {...initialOptions} showPercentage={false} />
-    )
-    expect(CircleNode.find('text').exists()).toBe(false);
+    const {circle} = setup({showPercentage: false});
+    expect(circle.find('text').exists()).toBeFalsy();
   })
 
-  xit('Should render a text with 25%', () => {
-    const CircleNode = shallow(
-      <Circle {...initialOptions} />
-    )
-    // FIXME: Can get the text element but don't know how to read value from <text>
-    console.log(CircleNode.find('text').debug());
-  })
-
+  it('Should render a text with 25%', () => {
+    const {circle} = setup();
+    expect(circle.find('text').text()).toEqual('25%');
+  });
 });
