@@ -14,9 +14,10 @@ export interface AppState {
   size: string;
   lineWidth: string;
   animated: boolean;
+  roundedStroke: boolean;
 }
 
-export type StatePropName = 'progressColor' | 'bgColor' | 'textColor' | 'size' | 'lineWidth';
+export type StatePropName = keyof AppState;
 
 export default class App extends Component<{}, AppState> {
   state: AppState = {
@@ -27,6 +28,7 @@ export default class App extends Component<{}, AppState> {
     size: '200',
     lineWidth: `30`,
     animated: true,
+    roundedStroke: true
   }
 
   onTextFieldChange = (propName: StatePropName) => (e: any) => {
@@ -37,12 +39,13 @@ export default class App extends Component<{}, AppState> {
     this.setState({ progress });
   }
 
-  onAnimationChange = (animated: boolean) => {
-    this.setState({ animated: !this.state.animated });
+  onAnimationCheckboxChange = (propName: StatePropName) => (e: any) => {
+    const currentValue = this.state[propName];
+    this.setState({ [propName]: !currentValue } as any);
   }
 
   render() {
-    const { progress, progressColor, bgColor, textColor, size, lineWidth, animated } = this.state;
+    const { progress, progressColor, bgColor, textColor, size, lineWidth, animated, roundedStroke } = this.state;
 
     return (
       <AppWrapper>
@@ -63,10 +66,18 @@ export default class App extends Component<{}, AppState> {
             <TextField value={progressColor} label="progress color" onChange={this.onTextFieldChange('progressColor')} />
             <TextField value={bgColor} label="background color" onChange={this.onTextFieldChange('bgColor')} />
             <TextField value={textColor} label="text color" onChange={this.onTextFieldChange('textColor')} />
-            <Checkbox 
-              initiallyChecked={true} 
-              label="Animation" 
-              onChange={this.onAnimationChange}></Checkbox>
+            <div>
+              <Checkbox
+                initiallyChecked={true} 
+                label="Animation" 
+                onChange={this.onAnimationCheckboxChange('animated')} 
+              />
+              <Checkbox
+                initiallyChecked={true}
+                label="Rounded stroke" 
+                onChange={this.onAnimationCheckboxChange('roundedStroke')} 
+              />
+            </div>
           </TextFieldsWrapper>
         </OptionsWrapper>
         <CircleWrapper>
@@ -74,6 +85,7 @@ export default class App extends Component<{}, AppState> {
             <h1>Custom</h1>
             <Circle
               animate={animated}
+              roundedStroke={roundedStroke}
               size={size}
               progress={progress}
               progressColor={progressColor}
