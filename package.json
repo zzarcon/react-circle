@@ -4,7 +4,7 @@
     "@atlaskit/field-range": "^2.6.3",
     "@atlaskit/field-text": "^4.3.0",
     "styled-components": "^3.2.3",
-    "ts-react-toolbox": "^0.0.45"
+    "ts-react-toolbox": "^0.0.46"
   },
   "engines": {
     "node": "^8.4.0"
