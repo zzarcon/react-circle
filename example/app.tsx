@@ -50,12 +50,12 @@ export default class App extends Component<{}, AppState> {
   }
 
   render() {
-    const { progress, progressColor, bgColor, textColor, size, lineWidth, animated, roundedStroke, responsive} = this.state;
+    const { progress, progressColor, bgColor, textColor, size, lineWidth, animated, roundedStroke, responsive, defaultMode} = this.state;
 
     return (
       <AppWrapper>
         <OptionsSidebar>
-        <OptionsWrapper disabled={this.state.defaultMode}>
+        <OptionsWrapper disabled={defaultMode}>
           <div>
             Percentage
             <FieldRange
@@ -95,12 +95,12 @@ export default class App extends Component<{}, AppState> {
               shouldFitContainer
               onClick={this.onCheckboxChange('defaultMode')} 
             >
-              {this.state.defaultMode ? 'DEFAULT' : 'CUSTOM'}
+              {defaultMode ? 'DEFAULT' : 'CUSTOM'}
             </Button>
         </OptionsWrapper>
           </OptionsSidebar>
         <CircleWrapper>
-            {!this.state.defaultMode ? 
+            {!defaultMode ? 
             <Circle
               responsive={responsive}
               animate={animated}

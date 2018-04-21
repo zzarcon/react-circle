@@ -1,8 +1,14 @@
-import styled, {css} from 'styled-components';
+import styled, {css, injectGlobal} from 'styled-components';
 
 export interface OptionsWrapperProps {
   disabled: boolean;
 }
+
+injectGlobal`
+  body {
+    background: linear-gradient(90deg, #69b7eb, #b3dbd3, #f4d6db);
+  }
+`;
 
 export const AppWrapper = styled.div`
   display: flex;
