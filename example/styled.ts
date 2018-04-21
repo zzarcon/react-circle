@@ -2,10 +2,17 @@ import styled, {css} from 'styled-components';
 
 export const AppWrapper = styled.div`
   display: flex;
-  margin:3em 10em;
-  max-height:90vh;
+  max-height: 80vh;
+  max-width: 90vw;
   box-shadow: 1px 5px 5px 1px rgba(0,0,0,.3);
-  background:white;
+  background: white;
+  position: absolute;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 `;
 
 export const OptionsWrapper = styled.div`
@@ -30,6 +37,7 @@ export const OptionsSidebar = styled.div`
   flex-direction:column;
   padding:3em;
   border-right: 1px solid #e2e2e2;
+  overflow: auto;
 `;
 
 export const TextFieldsWrapper = styled.div`
@@ -42,26 +50,3 @@ export const TextFieldsWrapper = styled.div`
 export const CheckBoxWrapper = styled.div`
   padding-top:20px;
 `;
-
-export const DefaultButton = styled.button`
-margin-top:20px;
-font-size:20px;
-padding:10px 20px;
-background:#0052CC;
-color:white;
-border-radius:4px;
-outline:none;
-border: 1px solid #e2e2e2;
-&:hover{
-  cursor: pointer;
-  opacity:.8;
-}
-${props => props.default && css`
-background:white;
-color:#333;
-&:hover{
-  background:#e2e2e2;
-}
-`
-}
-`

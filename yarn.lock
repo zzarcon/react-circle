@@ -8,7 +8,7 @@
   dependencies:
     prop-types "^15.5.10"
 
-"@atlaskit/button@^7.0.0":
+"@atlaskit/button@^7.0.0", "@atlaskit/button@^7.0.2":
   version "7.0.2"
   resolved "https://registry.yarnpkg.com/@atlaskit/button/-/button-7.0.2.tgz#d5e60e4d6987730435ccce6e26c8137d6498e830"
   dependencies:

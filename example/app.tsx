@@ -3,7 +3,8 @@ import { Component } from 'react';
 import FieldRange from '@atlaskit/field-range';
 import TextField from '@atlaskit/field-text';
 import Checkbox from '@atlaskit/checkbox';
-import { AppWrapper, TextFieldsWrapper, OptionsWrapper, CircleWrapper, DefaultButton, CheckBoxWrapper, OptionsSidebar } from './styled';
+import Button from '@atlaskit/button';
+import { AppWrapper, TextFieldsWrapper, OptionsWrapper, CircleWrapper, CheckBoxWrapper, OptionsSidebar } from './styled';
 import Circle from '../src';
 
 export interface AppState {
@@ -89,12 +90,14 @@ export default class App extends Component<{}, AppState> {
                 />
             </CheckBoxWrapper>
           </TextFieldsWrapper>
+          <Button
+              appearance="primary"
+              shouldFitContainer
+              onClick={this.onCheckboxChange('defaultMode')} 
+            >
+              {this.state.defaultMode ? 'DEFAULT' : 'CUSTOM'}
+            </Button>
         </OptionsWrapper>
-            <DefaultButton 
-            onClick={this.onCheckboxChange('defaultMode')} 
-            default={this.state.defaultMode}>
-            {this.state.defaultMode ? 'DEFAULT' : 'CUSTOM'}
-            </DefaultButton>
           </OptionsSidebar>
         <CircleWrapper>
             {!this.state.defaultMode ? 
