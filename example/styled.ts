@@ -1,5 +1,9 @@
 import styled, {css} from 'styled-components';
 
+export interface OptionsWrapperProps {
+  disabled: boolean;
+}
+
 export const AppWrapper = styled.div`
   display: flex;
   max-height: 80vh;
@@ -16,10 +20,10 @@ export const AppWrapper = styled.div`
 `;
 
 export const OptionsWrapper = styled.div`
-  ${props => props.disabled && css`
+  ${(props: OptionsWrapperProps) => props.disabled ? css`
   opacity:.4;
   pointer-events: none;
-  `
+  ` : ''
 }
 `;
 
