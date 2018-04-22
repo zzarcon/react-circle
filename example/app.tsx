@@ -3,7 +3,8 @@ import { Component } from 'react';
 import FieldRange from '@atlaskit/field-range';
 import TextField from '@atlaskit/field-text';
 import Checkbox from '@atlaskit/checkbox';
-import { AppWrapper, TextFieldsWrapper, OptionsWrapper, CircleWrapper } from './styled';
+import Button from '@atlaskit/button';
+import { AppWrapper, TextFieldsWrapper, OptionsWrapper, CircleWrapper, CheckBoxWrapper, OptionsSidebar } from './styled';
 import Circle from '../src';
 
 export interface AppState {
@@ -15,20 +16,24 @@ export interface AppState {
   lineWidth: string;
   animated: boolean;
   roundedStroke: boolean;
+  responsive: boolean;
+  defaultMode: boolean;
 }
 
 export type StatePropName = keyof AppState;
 
 export default class App extends Component<{}, AppState> {
   state: AppState = {
-    progress: 25,
-    progressColor: '#F7DC1B',
-    bgColor: '#54BAD8',
-    textColor: 'hotpink',
+    progress: 13,
+    progressColor: 'Maroon',
+    bgColor: 'Moccasin',
+    textColor: 'Maroon',
     size: '200',
     lineWidth: `30`,
     animated: true,
-    roundedStroke: true
+    roundedStroke: true,
+    responsive: true,
+    defaultMode: false,
   }
 
   onTextFieldChange = (propName: StatePropName) => (e: any) => {
@@ -45,11 +50,12 @@ export default class App extends Component<{}, AppState> {
   }
 
   render() {
-    const { progress, progressColor, bgColor, textColor, size, lineWidth, animated, roundedStroke } = this.state;
+    const { progress, progressColor, bgColor, textColor, size, lineWidth, animated, roundedStroke, responsive, defaultMode} = this.state;
 
     return (
       <AppWrapper>
-        <OptionsWrapper>
+        <OptionsSidebar>
+        <OptionsWrapper disabled={defaultMode}>
           <div>
             Percentage
             <FieldRange
@@ -66,7 +72,7 @@ export default class App extends Component<{}, AppState> {
             <TextField value={progressColor} label="progress color" onChange={this.onTextFieldChange('progressColor')} />
             <TextField value={bgColor} label="background color" onChange={this.onTextFieldChange('bgColor')} />
             <TextField value={textColor} label="text color" onChange={this.onTextFieldChange('textColor')} />
-            <div>
+            <CheckBoxWrapper>
               <Checkbox
                 initiallyChecked={true} 
                 label="Animation" 
@@ -77,13 +83,26 @@ export default class App extends Component<{}, AppState> {
                 label="Rounded stroke" 
                 onChange={this.onCheckboxChange('roundedStroke')} 
               />
-            </div>
+                <Checkbox
+                  initiallyChecked={true}
+                  label="Responsive"
+                  onChange={this.onCheckboxChange('responsive')}
+                />
+            </CheckBoxWrapper>
           </TextFieldsWrapper>
+          <Button
+              appearance="primary"
+              shouldFitContainer
+              onClick={this.onCheckboxChange('defaultMode')} 
+            >
+              {defaultMode ? 'DEFAULT' : 'CUSTOM'}
+            </Button>
         </OptionsWrapper>
+          </OptionsSidebar>
         <CircleWrapper>
-          <div>
-            <h1>Custom</h1>
+            {!defaultMode ? 
             <Circle
+              responsive={responsive}
               animate={animated}
               roundedStroke={roundedStroke}
               size={size}
@@ -94,13 +113,8 @@ export default class App extends Component<{}, AppState> {
               lineWidth={lineWidth}
               textStyle={{ font: 'bold 5rem Helvetica, Arial, sans-serif' }}
             />
-          </div>
-          <div>
-            <h1>Default</h1>
-            <Circle
-              progress={35}
-            />
-          </div>
+              : <Circle progress={35}/>
+            }
         </CircleWrapper>
       </AppWrapper>
     )
