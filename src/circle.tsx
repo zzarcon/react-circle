@@ -4,6 +4,7 @@ import { Component, CSSProperties } from 'react';
 export interface CircleProps {
   progress: number;
   animate?: boolean;
+  animationDuration?: string;
   showPercentage?: boolean;
   showPercentageSymbol?: boolean;
   progressColor?: string;
@@ -29,6 +30,7 @@ export class Circle extends Component<CircleProps, CircleState> {
   static defaultProps: CircleProps = {
     progress: 0,
     animate: true,
+    animationDuration: '1s',
     showPercentage: true,
     showPercentageSymbol: true,
     progressColor: 'rgb(76, 154, 255)',
@@ -53,12 +55,12 @@ export class Circle extends Component<CircleProps, CircleState> {
 
   render() {
     const { text } = this;
-    const { progress, size, bgColor, progressColor, lineWidth, animate, roundedStroke, responsive } = this.props;
+    const { progress, size, bgColor, progressColor, lineWidth, animate, animationDuration, roundedStroke, responsive } = this.props;
     const strokeDashoffset = getOffset(progress);
-    const transition = animate ? 'stroke-dashoffset 1s ease-out' : null;
+    const transition = animate ? 'stroke-dashoffset ' + animationDuration + ' ease-out' : null;
     const strokeLinecap = roundedStroke ? 'round' : 'butt';
     const svgSize = responsive ? '100%' : size;
-    
+
     return (
       <svg width={svgSize} height={svgSize} viewBox="-25 -25 400 400">
         <circle stroke={bgColor} cx="175" cy="175" r="175" strokeWidth={lineWidth} fill="none"/>

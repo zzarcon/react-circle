@@ -40,14 +40,15 @@ import Circle from 'react-circle';
 // <Type>: <Description>
 <Circle
   animate={true} // Boolean: Animated/Static progress
+  animationDuration="1s" //String: Length of animation
   responsive={true} // Boolean: Make SVG adapt to parent size
   size={150} // Number: Defines the size of the circle.
-  lineWidth={14} // Number: Defines the thickness of the circle's stroke. 
+  lineWidth={14} // Number: Defines the thickness of the circle's stroke.
   progress={69} // Number: Update to change the progress and percentage.
   progressColor="cornflowerblue"  // String: Color of "progress" portion of circle.
   bgColor="whitesmoke" // String: Color of "empty" portion of circle.
   textColor="hotpink" // String: Color of percentage text color.
-  textStyle={{ 
+  textStyle={{
     font: 'bold 5rem Helvetica, Arial, sans-serif' // CSSProperties: Custom styling for percentage.
   }}
   percentSpacing={10} // Number: Adjust spacing of "%" symbol and number.
