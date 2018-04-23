@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { Component } from 'react';
-import FieldRange from '@atlaskit/field-range';
 import TextField from '@atlaskit/field-text';
 import Checkbox from '@atlaskit/checkbox';
 import Button from '@atlaskit/button';
@@ -50,8 +49,8 @@ export default class App extends Component<{}, AppState> {
     this.setState({ [propName]: e.target.value } as any);
   }
 
-  onProgressChange = (progress: number) => {
-    this.setState({ progress });
+  onProgressChange = (e: any) => {
+    this.setState({ progress: e.target.value });
   }
 
   onCheckboxChange = (propName: StatePropName) => (e: any) => {
@@ -68,12 +67,12 @@ export default class App extends Component<{}, AppState> {
         <OptionsSidebar>
         <OptionsWrapper disabled={defaultMode}>
           <div>
-            Percentage
-            <FieldRange
+            <div>Percentage</div>
+            <input
+              type="range"
               value={progress}
               min={0}
               max={100}
-              step={1}
               onChange={this.onProgressChange}
             />
           </div>
