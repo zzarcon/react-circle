@@ -39,15 +39,6 @@
     babel-runtime "^6.26.0"
     styled-components "1.4.6 - 3"
 
-"@atlaskit/field-range@^2.6.3":
-  version "2.6.3"
-  resolved "https://registry.yarnpkg.com/@atlaskit/field-range/-/field-range-2.6.3.tgz#595615369a81fe6f6363831c74813160d7530cc2"
-  dependencies:
-    "@atlaskit/theme" "^2.3.4"
-    babel-runtime "^6.26.0"
-    prop-types "^15.5.10"
-    styled-components "1.4.6 - 3"
-
 "@atlaskit/field-text@^4.3.0":
   version "4.3.0"
   resolved "https://registry.yarnpkg.com/@atlaskit/field-text/-/field-text-4.3.0.tgz#4ef2a8ff7d0e16cfcee4df402bd82d087a7c6065"
@@ -97,7 +88,7 @@
     react-transition-group "^2.2.1"
     styled-components "1.4.6 - 3"
 
-"@atlaskit/theme@^2.3.4", "@atlaskit/theme@^2.4.1":
+"@atlaskit/theme@^2.4.1":
   version "2.4.1"
   resolved "https://registry.yarnpkg.com/@atlaskit/theme/-/theme-2.4.1.tgz#a554075068ff4d85542292998f3544160b4a5a73"
   dependencies:

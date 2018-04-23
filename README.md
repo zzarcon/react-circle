@@ -56,3 +56,9 @@ import Circle from 'react-circle';
   showPercentageSymbol={true} // Boolean: Show/hide only the "%" symbol.
 />
 ```
+
+# Features
+
+* No external dependencies
+* No external styles
+* 2KB size => https://bundlephobia.com/result?p=react-circle
