@@ -16,6 +16,6 @@
     "jsx": "react"
   },
   "files": [
-    "./typings/atlaskit.d.ts"
+    "./custom-typings/atlaskit.d.ts"
   ]
 }
