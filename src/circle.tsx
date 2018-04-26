@@ -57,7 +57,7 @@ export class Circle extends Component<CircleProps, CircleState> {
     const { text } = this;
     const { progress, size, bgColor, progressColor, lineWidth, animate, animationDuration, roundedStroke, responsive } = this.props;
     const strokeDashoffset = getOffset(progress);
-    const transition = animate ? 'stroke-dashoffset ' + animationDuration + ' ease-out' : null;
+    const transition = animate ? `stroke-dashoffset ${animationDuration} ease-out` : null;
     const strokeLinecap = roundedStroke ? 'round' : 'butt';
     const svgSize = responsive ? '100%' : size;
 
