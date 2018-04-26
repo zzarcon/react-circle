@@ -29,5 +29,6 @@
   "types": "dist/index.d.ts",
   "files": [
     "dist"
-  ]
+  ],
+  "repository": "https://github.com/zzarcon/react-circle"
 }
