@@ -30,5 +30,13 @@
   "files": [
     "dist"
   ],
-  "repository": "https://github.com/zzarcon/react-circle"
+  "repository": "https://github.com/zzarcon/react-circle",
+  "keywords": [
+    "react",
+    "circle",
+    "svg",
+    "progress",
+    "react-circle",
+    "percentage"
+  ]
 }
