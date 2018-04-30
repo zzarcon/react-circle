@@ -7,7 +7,7 @@
     "ts-react-toolbox": "^0.0.46"
   },
   "engines": {
-    "node": "^8.4.0"
+    "node": ">=8.4.0"
   },
   "scripts": {
     "dev": "ts-react-toolbox dev",
