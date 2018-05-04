@@ -7,11 +7,11 @@ describe('ReactCircle', () => {
     const initialOptions = {
       progress: 25
     }
-  
+
     const circle = shallow(
       <Circle {...initialOptions} {...props} />
     );
-    
+
     return {
       circle
     };
@@ -60,5 +60,17 @@ describe('ReactCircle', () => {
     const { circle } = setup({animate:false});
     const innerCircle = circle.find('circle').last()
     expect(innerCircle.prop('style')).toMatchSnapshot();
+  })
+
+  it('Should render with 1 second animation duration', () => {
+    const { circle } = setup();
+    const innerCircle = circle.find('circle').last()
+    expect(innerCircle.prop('style').transition).toMatch(/1s/)
+  })
+
+  it('Should render with .25 second animation duration', () => {
+    const { circle } = setup({animationDuration:'.25s');
+    const innerCircle = circle.find('circle').last()
+    expect(innerCircle.prop('style').transition).toMatch(/.25s/)
   })
 });
