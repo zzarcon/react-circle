@@ -57,6 +57,4 @@ typings/
 # dotenv environment variables file
 .env
 
-dist
-publish_dist
 package-lock.json
