@@ -84,14 +84,14 @@ export default class App extends Component<{}, AppState> {
             <TextField value={textColor} label="text color" onChange={this.onTextFieldChange('textColor')} />
             <CheckBoxWrapper>
               <Checkbox
-                initiallyChecked={true} 
-                label="Animation" 
-                onChange={this.onCheckboxChange('animated')} 
+                initiallyChecked={true}
+                label="Animation"
+                onChange={this.onCheckboxChange('animated')}
               />
               <Checkbox
                 initiallyChecked={true}
-                label="Rounded stroke" 
-                onChange={this.onCheckboxChange('roundedStroke')} 
+                label="Rounded stroke"
+                onChange={this.onCheckboxChange('roundedStroke')}
               />
                 <Checkbox
                   initiallyChecked={true}
@@ -103,14 +103,14 @@ export default class App extends Component<{}, AppState> {
           <Button
               appearance="primary"
               shouldFitContainer
-              onClick={this.onCheckboxChange('defaultMode')} 
+              onClick={this.onCheckboxChange('defaultMode')}
             >
               {defaultMode ? 'DEFAULT' : 'CUSTOM'}
             </Button>
         </OptionsWrapper>
           </OptionsSidebar>
         <CircleWrapper>
-            {!defaultMode ? 
+            {!defaultMode ?
             <Circle
               responsive={responsive}
               animate={animated}
@@ -122,6 +122,7 @@ export default class App extends Component<{}, AppState> {
               textColor={textColor}
               lineWidth={lineWidth}
               textStyle={{ font: 'bold 5rem Helvetica, Arial, sans-serif' }}
+              onAnimationEnd={() => { console.log('onAnimationEnd'); }}
             />
               : <Circle progress={35}/>
             }

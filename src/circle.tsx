@@ -16,6 +16,7 @@ export interface CircleProps {
   textStyle?: CSSProperties;
   roundedStroke?: boolean;
   responsive?: boolean;
+  onAnimationEnd?(): void;
 }
 
 export interface CircleState {
@@ -55,7 +56,7 @@ export class Circle extends Component<CircleProps, CircleState> {
 
   render() {
     const { text } = this;
-    const { progress, size, bgColor, progressColor, lineWidth, animate, animationDuration, roundedStroke, responsive } = this.props;
+    const { progress, size, bgColor, progressColor, lineWidth, animate, animationDuration, roundedStroke, responsive, onAnimationEnd } = this.props;
     const strokeDashoffset = getOffset(progress);
     const transition = animate ? `stroke-dashoffset ${animationDuration} ease-out` : null;
     const strokeLinecap = roundedStroke ? 'round' : 'butt';
@@ -64,7 +65,7 @@ export class Circle extends Component<CircleProps, CircleState> {
     return (
       <svg width={svgSize} height={svgSize} viewBox="-25 -25 400 400">
         <circle stroke={bgColor} cx="175" cy="175" r="175" strokeWidth={lineWidth} fill="none"/>
-        <circle stroke={progressColor} transform="rotate(-90 175 175)" cx="175" cy="175" r="175" strokeDasharray="1100" strokeWidth={lineWidth} strokeDashoffset="1100" strokeLinecap={strokeLinecap} fill="none" style={{ strokeDashoffset, transition }} />
+        <circle stroke={progressColor} transform="rotate(-90 175 175)" cx="175" cy="175" r="175" strokeDasharray="1100" strokeWidth={lineWidth} strokeDashoffset="1100" strokeLinecap={strokeLinecap} fill="none" style={{ strokeDashoffset, transition }} onTransitionEnd={onAnimationEnd}/>
         {text}
       </svg>
     );
