@@ -69,8 +69,16 @@ describe('ReactCircle', () => {
   })
 
   it('Should render with .25 second animation duration', () => {
-    const { circle } = setup({animationDuration:'.25s');
+    const { circle } = setup({animationDuration:'.25s'});
     const innerCircle = circle.find('circle').last()
     expect(innerCircle.prop('style').transition).toMatch(/.25s/)
   })
+
+  it('Should call onAnimationEnd event handler', () => {
+    const onAnimationEnd = jest.fn();
+    const { circle } = setup({onAnimationEnd});
+    const innerCircle = circle.find('circle').last();
+    innerCircle.simulate('transitionend');
+    expect(onAnimationEnd).toBeCalled();
+  });
 });
