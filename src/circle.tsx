@@ -48,7 +48,7 @@ export class Circle extends Component<CircleProps, CircleState> {
     if (!showPercentage) return;
 
     return (
-      <text style={textStyle} fill={textColor} x="50%" y="50%" dx="-25" textAnchor="middle">
+      <text style={textStyle} fill={textColor} x={radius} y={radius} textAnchor="middle" dominantBaseline="central">
         {progress}{showPercentageSymbol && <tspan dx={percentSpacing}>%</tspan>}
       </text>
     );
