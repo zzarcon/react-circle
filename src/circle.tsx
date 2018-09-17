@@ -13,6 +13,7 @@ export interface CircleProps {
   size?: string;
   lineWidth?: string;
   percentSpacing?: number;
+  verticleSpacing?: number | string;
   textStyle?: CSSProperties;
   roundedStroke?: boolean;
   responsive?: boolean;
@@ -40,43 +41,16 @@ export class Circle extends Component<CircleProps, CircleState> {
     size: '100',
     lineWidth: '25',
     percentSpacing: 10,
+    verticleSpacing: "0.34em",
     textStyle: { font: 'bold 4rem Helvetica, Arial, sans-serif' }
   }
 
-  /**
-   * @desc Some browers (like IE/Edge) don't support dominant-baseLine.
-   *       It detects whether in Chrome/Firefox/Safari which has been tested to support it,
-   *       and takes all other circumstances as not supported and use the workaround instead.
-   * @ref https://github.com/arasatasaygin/is.js/blob/master/is.js
-   */
-  get dominantBaselineSupported () {
-    const W = window as any;
-    if (W.dominantBaselineSupported === void 0) {
-      const ua = navigator.userAgent.toLowerCase()
-      const supportedPatterns = [
-        /(?:chrome|crios)\/(\d+)/,
-        /(?:firefox|fxios)\/(\d+)/,
-        /version\/(\d+).+?safari/
-      ];
-
-      W.dominantBaselineSupported = supportedPatterns.some(p => !!ua.match(p));
-    }
-
-    return W.dominantBaselineSupported;
-  }
-
   get text() {
-    const { progress, showPercentage, textColor, textStyle, percentSpacing, showPercentageSymbol } = this.props;
+    const { progress, showPercentage, textColor, textStyle, percentSpacing, verticleSpacing, showPercentageSymbol } = this.props;
     if (!showPercentage) return;
 
-    if (!this.dominantBaselineSupported) return (
-      <text style={textStyle} fill={textColor} x={radius} y={radius} dy="0.33em" textAnchor="middle">
-        {progress}{showPercentageSymbol && <tspan dx={percentSpacing}>%</tspan>}
-      </text>
-    );
-
     return (
-      <text style={textStyle} fill={textColor} x={radius} y={radius} textAnchor="middle" dominantBaseline="central">
+      <text style={textStyle} fill={textColor} x={radius} y={radius} dy={verticleSpacing} textAnchor="middle">
         {progress}{showPercentageSymbol && <tspan dx={percentSpacing}>%</tspan>}
       </text>
     );

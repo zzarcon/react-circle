@@ -41,9 +41,9 @@ import Circle from 'react-circle';
 // All avaliable props for customization(illustrated by default values):
 // Details are ordered as: `<Type>: <Description>`
 <Circle
-  animate={true} // Boolean: Animated/Static progress
-  animationDuration="1s" // String: Length of animation
-  responsive={false} // Boolean: Make SVG adapt to parent size
+  animate={true} // Boolean: Animated/Static progress.
+  animationDuration="1s" // String: Length of animation.
+  responsive={false} // Boolean: Make SVG adapt to parent size.
   size="100" // String: Defines the size of the circle.
   lineWidth="25" // String: Defines the thickness of the circle's stroke.
   progress="0" // String: Update to change the progress and percentage.
@@ -54,7 +54,8 @@ import Circle from 'react-circle';
     font: 'bold 4rem Helvetica, Arial, sans-serif' // CSSProperties: Custom styling for percentage.
   }}
   percentSpacing={10} // Number: Adjust spacing of "%" symbol and number.
-  roundedStroke={false} // Boolean: Rounded/Flat line ends
+  verticleSpacing="0.34em" // Number/String: Adjust verticle spacing of the text.
+  roundedStroke={false} // Boolean: Rounded/Flat line ends.
   showPercentage={true} // Boolean: Show/hide percentage.
   showPercentageSymbol={true} // Boolean: Show/hide only the "%" symbol.
 />
