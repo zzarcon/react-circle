@@ -3,13 +3,13 @@
 exports[`ReactCircle Should default render with animation 1`] = `
 Object {
   "strokeDashoffset": 825,
-  "transition": null,
+  "transition": undefined,
 }
 `;
 
 exports[`ReactCircle Should render without animation 1`] = `
 Object {
   "strokeDashoffset": 825,
-  "transition": null,
+  "transition": undefined,
 }
 `;
