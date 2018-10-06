@@ -65,50 +65,50 @@ export default class App extends Component<{}, AppState> {
       <AppWrapper>
         {ghLink}
         <OptionsSidebar>
-        <Button
-            appearance="primary"
-            shouldFitContainer
-            onClick={this.onCheckboxChange('defaultMode')}
-          >
-            {defaultMode ? 'DEFAULT' : 'CUSTOM'}
-          </Button>
-        <OptionsWrapper disabled={defaultMode}>
-          <div>
-            <div>Percentage</div>
-            <input
-              type="range"
-              value={progress}
-              min={0}
-              max={100}
-              onChange={this.onProgressChange}
-            />
-          </div>
-          <TextFieldsWrapper>
-            <TextField value={size} label="width" onChange={this.onTextFieldChange('size')} />
-            <TextField value={lineWidth} label="line width" onChange={this.onTextFieldChange('lineWidth')} />
-            <TextField value={progressColor} label="progress color" onChange={this.onTextFieldChange('progressColor')} />
-            <TextField value={bgColor} label="background color" onChange={this.onTextFieldChange('bgColor')} />
-            <TextField value={textColor} label="text color" onChange={this.onTextFieldChange('textColor')} />
-            <CheckBoxWrapper>
-              <Checkbox
-                initiallyChecked={true}
-                label="Animation"
-                onChange={this.onCheckboxChange('animated')}
+          <OptionsWrapper disabled={defaultMode}>
+            <Button
+              appearance="primary"
+              shouldFitContainer
+              onClick={this.onCheckboxChange('defaultMode')}
+              >
+                {defaultMode ? 'DEFAULT' : 'CUSTOM'}
+              </Button>
+            <div>
+              <div>Percentage</div>
+              <input
+                type="range"
+                value={progress}
+                min={0}
+                max={100}
+                onChange={this.onProgressChange}
               />
-              <Checkbox
-                initiallyChecked={true}
-                label="Rounded stroke"
-                onChange={this.onCheckboxChange('roundedStroke')}
-              />
+            </div>
+            <TextFieldsWrapper>
+              <TextField value={size} label="width" onChange={this.onTextFieldChange('size')} />
+              <TextField value={lineWidth} label="line width" onChange={this.onTextFieldChange('lineWidth')} />
+              <TextField value={progressColor} label="progress color" onChange={this.onTextFieldChange('progressColor')} />
+              <TextField value={bgColor} label="background color" onChange={this.onTextFieldChange('bgColor')} />
+              <TextField value={textColor} label="text color" onChange={this.onTextFieldChange('textColor')} />
+              <CheckBoxWrapper>
                 <Checkbox
                   initiallyChecked={true}
-                  label="Responsive"
-                  onChange={this.onCheckboxChange('responsive')}
+                  label="Animation"
+                  onChange={this.onCheckboxChange('animated')}
                 />
-            </CheckBoxWrapper>
-          </TextFieldsWrapper>
-        </OptionsWrapper>
-          </OptionsSidebar>
+                <Checkbox
+                  initiallyChecked={true}
+                  label="Rounded stroke"
+                  onChange={this.onCheckboxChange('roundedStroke')}
+                />
+                  <Checkbox
+                    initiallyChecked={true}
+                    label="Responsive"
+                    onChange={this.onCheckboxChange('responsive')}
+                  />
+              </CheckBoxWrapper>
+            </TextFieldsWrapper>
+          </OptionsWrapper>
+        </OptionsSidebar>
         <CircleWrapper>
             {!defaultMode ?
             <Circle

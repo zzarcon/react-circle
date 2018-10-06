@@ -39,8 +39,10 @@ export const OptionsWrapper = styled.div`
         pointer-events: none;
       }
     `:''}
-    margin-top: 2em;
-      > :last-child {
+      > button {
+        margin-bottom: 2em;        
+      }
+      >:last-child {
         margin-bottom: 2em;
       }
     `}
