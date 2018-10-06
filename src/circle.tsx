@@ -17,6 +17,7 @@ export interface CircleProps {
   roundedStroke?: boolean;
   responsive?: boolean;
   onAnimationEnd?(): void;
+  children?: (<T>(parts:any) => React.ReactElement<T>)|React.ReactNode;
 }
 
 export interface CircleState {
@@ -43,7 +44,7 @@ export class Circle extends Component<CircleProps, CircleState> {
     textStyle: { font: 'bold 4rem Helvetica, Arial, sans-serif' }
   }
 
-  get text() {
+  get progressText() {
     const { progress, showPercentage, textColor, textStyle, percentSpacing, showPercentageSymbol } = this.props;
     if (!showPercentage) return;
 
@@ -54,20 +55,32 @@ export class Circle extends Component<CircleProps, CircleState> {
     );
   }
 
-  render() {
-    const { text } = this;
-    const { progress, size, bgColor, progressColor, lineWidth, animate, animationDuration, roundedStroke, responsive, onAnimationEnd } = this.props;
+  get circle() {
+    const { bgColor, lineWidth } = this.props;
+    return <circle stroke={bgColor} cx="175" cy="175" r="175" strokeWidth={lineWidth} fill="none"/>
+  }
+
+  get progressCircle() {
+    const { progress, progressColor, lineWidth, animate, animationDuration, roundedStroke, onAnimationEnd } = this.props;
     const strokeDashoffset = getOffset(progress);
     const transition = animate ? `stroke-dashoffset ${animationDuration} ease-out` : undefined;
     const strokeLinecap = roundedStroke ? 'round' : 'butt';
-    const svgSize = responsive ? '100%' : size;
+    return <circle stroke={progressColor} transform="rotate(-90 175 175)" cx="175" cy="175" r="175" strokeDasharray="1100" strokeWidth={lineWidth} strokeDashoffset="1100" strokeLinecap={strokeLinecap} fill="none" style={{ strokeDashoffset, transition }} onTransitionEnd={onAnimationEnd}/>
+  }
 
-    return (
-      <svg width={svgSize} height={svgSize} viewBox="-25 -25 400 400">
-        <circle stroke={bgColor} cx="175" cy="175" r="175" strokeWidth={lineWidth} fill="none"/>
-        <circle stroke={progressColor} transform="rotate(-90 175 175)" cx="175" cy="175" r="175" strokeDasharray="1100" strokeWidth={lineWidth} strokeDashoffset="1100" strokeLinecap={strokeLinecap} fill="none" style={{ strokeDashoffset, transition }} onTransitionEnd={onAnimationEnd}/>
-        {text}
-      </svg>
-    );
+  render() {
+    const { progressText, circle, progressCircle } = this;
+    const { size, responsive } = this.props
+    const svgSize = responsive ? '100%' : size;
+    const renderPropMode = typeof(this.props.children)==='function';
+
+    return renderPropMode
+          ? (this.props.children as Function)({circle,progressCircle,progressText})
+          : <svg width={svgSize} height={svgSize} viewBox="-25 -25 400 400">
+              {circle}
+              {progressCircle}
+              {progressText}
+              {this.props.children}
+            </svg>;
   }
 }

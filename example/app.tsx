@@ -16,7 +16,7 @@ export interface AppState {
   animated: boolean;
   roundedStroke: boolean;
   responsive: boolean;
-  defaultMode: boolean;
+  mode: number;
 }
 
 export type StatePropName = keyof AppState;
@@ -42,7 +42,7 @@ export default class App extends Component<{}, AppState> {
     animated: true,
     roundedStroke: true,
     responsive: true,
-    defaultMode: false,
+    mode: 0,
   }
 
   onTextFieldChange = (propName: StatePropName) => (e: any) => {
@@ -58,14 +58,18 @@ export default class App extends Component<{}, AppState> {
     this.setState({ [propName]: !currentValue } as any);
   }
 
+  onModeChange = () => {
+    this.setState(state=>({mode:(state.mode+1)%3}));
+  }
+
   render() {
-    const { progress, progressColor, bgColor, textColor, size, lineWidth, animated, roundedStroke, responsive, defaultMode} = this.state;
+    const { progress, progressColor, bgColor, textColor, size, lineWidth, animated, roundedStroke, responsive, mode} = this.state;
 
     return (
       <AppWrapper>
         {ghLink}
         <OptionsSidebar>
-        <OptionsWrapper disabled={defaultMode}>
+        <OptionsWrapper disabled={!mode}>
           <div>
             <div>Percentage</div>
             <input
@@ -100,18 +104,19 @@ export default class App extends Component<{}, AppState> {
                 />
             </CheckBoxWrapper>
           </TextFieldsWrapper>
-          <Button
-              appearance="primary"
-              shouldFitContainer
-              onClick={this.onCheckboxChange('defaultMode')}
-            >
-              {defaultMode ? 'DEFAULT' : 'CUSTOM'}
-            </Button>
         </OptionsWrapper>
+        <Button
+          appearance="primary"
+          shouldFitContainer
+          onClick={this.onModeChange}
+          >
+            {mode > 1 ? 'CUSTOM RENDER' : (mode > 0 ? 'CUSTOM' : 'DEFAULT')}
+          </Button>
           </OptionsSidebar>
         <CircleWrapper>
-            {!defaultMode ?
-            <Circle
+            {mode === 0
+              ? <Circle progress={35}/>
+              : <Circle
               responsive={responsive}
               animate={animated}
               roundedStroke={roundedStroke}
@@ -123,9 +128,14 @@ export default class App extends Component<{}, AppState> {
               lineWidth={lineWidth}
               textStyle={{ font: 'bold 5rem Helvetica, Arial, sans-serif' }}
               onAnimationEnd={() => { console.log('onAnimationEnd'); }}
-            />
-              : <Circle progress={35}/>
-            }
+            >{mode === 2 ? ({circle, progressCircle}) => <svg width={responsive?'100%':size} height={responsive?'100%':size} viewBox="-25 -25 400 400">
+                <text x="25%" y="25%" style={{fontSize:50}}>{Math.round(60-(60*progress/100))} mins</text>
+                <text x="30%" y="50%" style={{fontSize:80,transformOrigin:'175px 175px 0px',transform:`rotate(${360*progress/100}deg)`}}>🕛</text>
+                <text x="20%" y="65%" style={{fontSize:45}}>remaining</text>
+                {circle}
+                {progressCircle}
+              </svg> : undefined}
+            </Circle>}
         </CircleWrapper>
       </AppWrapper>
     )
