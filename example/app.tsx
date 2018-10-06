@@ -65,6 +65,13 @@ export default class App extends Component<{}, AppState> {
       <AppWrapper>
         {ghLink}
         <OptionsSidebar>
+        <Button
+            appearance="primary"
+            shouldFitContainer
+            onClick={this.onCheckboxChange('defaultMode')}
+          >
+            {defaultMode ? 'DEFAULT' : 'CUSTOM'}
+          </Button>
         <OptionsWrapper disabled={defaultMode}>
           <div>
             <div>Percentage</div>
@@ -100,13 +107,6 @@ export default class App extends Component<{}, AppState> {
                 />
             </CheckBoxWrapper>
           </TextFieldsWrapper>
-          <Button
-              appearance="primary"
-              shouldFitContainer
-              onClick={this.onCheckboxChange('defaultMode')}
-            >
-              {defaultMode ? 'DEFAULT' : 'CUSTOM'}
-            </Button>
         </OptionsWrapper>
           </OptionsSidebar>
         <CircleWrapper>

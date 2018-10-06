@@ -32,11 +32,18 @@ export const AppWrapper = styled.div`
 `;
 
 export const OptionsWrapper = styled.div`
-  ${(props: OptionsWrapperProps) => props.disabled ? css`
-  opacity:.4;
-  pointer-events: none;
-  ` : ''
-}
+  ${css`
+    ${(props:OptionsWrapperProps)=>props.disabled?`
+      > div {
+        opacity:.4;
+        pointer-events: none;
+      }
+    `:''}
+    margin-top: 2em;
+      > :last-child {
+        margin-bottom: 2em;
+      }
+    `}
 `;
 
 export const CircleWrapper = styled.div`
@@ -51,15 +58,14 @@ export const OptionsSidebar = styled.div`
   width:30%;
   display:flex;
   flex-direction:column;
-  padding:3em;
   border-right: 1px solid #e2e2e2;
+  padding: 2em;
   overflow: auto;
 `;
 
 export const TextFieldsWrapper = styled.div`
   display: flex;
   justify-content: space-around;
-  display:flex;
   flex-direction:column;
 `;
 
