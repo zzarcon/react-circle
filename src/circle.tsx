@@ -25,7 +25,7 @@ export interface CircleState {
 
 const radius = 175;
 const diameter = Math.round(Math.PI * radius * 2);
-const getOffset = (val = 0) => Math.round((100 - val) / 100 * diameter);
+const getOffset = (val = 0) => Math.round((100 - Math.min(val, 100)) / 100 * diameter);
 
 export class Circle extends Component<CircleProps, CircleState> {
   static defaultProps: CircleProps = {
