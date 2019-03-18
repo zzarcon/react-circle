@@ -1,6 +1,14 @@
+/**
+ * @jest-environment node
+ */
+
 import * as React from 'react';
-import { shallow, render, mount } from 'enzyme';
+import { shallow, configure } from 'enzyme';
 import Circle, {CircleProps} from '../src';
+
+const Adapter = require("enzyme-adapter-react-16");
+
+configure({ adapter: new Adapter() });
 
 describe('ReactCircle', () => {
   const setup = (props?: Partial<CircleProps>) => {
@@ -80,5 +88,11 @@ describe('ReactCircle', () => {
     const innerCircle = circle.find('circle').last();
     innerCircle.simulate('transitionend');
     expect(onAnimationEnd).toBeCalled();
+  });
+
+  it('Should render a full circle if progress is above 100%', () => {
+    const { circle } = setup({ progress: 120 });
+    const innerCircle = circle.find('circle').last()
+    expect(innerCircle.prop('style').strokeDashoffset).toBe(0)
   });
 });
