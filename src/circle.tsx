@@ -13,6 +13,7 @@ export interface CircleProps {
   size?: string;
   lineWidth?: string;
   percentSpacing?: number;
+  verticleSpacing?: number | string;
   textStyle?: CSSProperties;
   roundedStroke?: boolean;
   responsive?: boolean;
@@ -40,15 +41,16 @@ export class Circle extends Component<CircleProps, CircleState> {
     size: '100',
     lineWidth: '25',
     percentSpacing: 10,
+    verticleSpacing: "0.34em",
     textStyle: { font: 'bold 4rem Helvetica, Arial, sans-serif' }
   }
 
   get text() {
-    const { progress, showPercentage, textColor, textStyle, percentSpacing, showPercentageSymbol } = this.props;
+    const { progress, showPercentage, textColor, textStyle, percentSpacing, verticleSpacing, showPercentageSymbol } = this.props;
     if (!showPercentage) return;
 
     return (
-      <text style={textStyle} fill={textColor} x={radius} y={radius} textAnchor="middle" dominantBaseline="central">
+      <text style={textStyle} fill={textColor} x={radius} y={radius} dy={verticleSpacing} textAnchor="middle">
         {progress}{showPercentageSymbol && <tspan dx={percentSpacing}>%</tspan>}
       </text>
     );
