@@ -61,12 +61,17 @@ export class Circle extends Component<CircleProps, CircleState> {
     const transition = animate ? `stroke-dashoffset ${animationDuration} ease-out` : undefined;
     const strokeLinecap = roundedStroke ? 'round' : 'butt';
     const svgSize = responsive ? '100%' : size;
-
+    const children = this.props.children
     return (
       <svg width={svgSize} height={svgSize} viewBox="-25 -25 400 400">
         <circle stroke={bgColor} cx="175" cy="175" r="175" strokeWidth={lineWidth} fill="none"/>
         <circle stroke={progressColor} transform="rotate(-90 175 175)" cx="175" cy="175" r="175" strokeDasharray="1100" strokeWidth={lineWidth} strokeDashoffset="1100" strokeLinecap={strokeLinecap} fill="none" style={{ strokeDashoffset, transition }} onTransitionEnd={onAnimationEnd}/>
-        {text}
+        {
+          children ?
+              children
+            :
+              text
+        }
       </svg>
     );
   }
